@@ -1,5 +1,5 @@
 export async function fetchCurrentStandings() {
-  const res = await fetch("http://api.jolpi.ca/ergast/f1/current/driverStandings.json");
+  const res = await fetch("https://api.jolpi.ca/ergast/f1/current/driverStandings.json");
   if (!res.ok) {
     throw new Error("Failed to fetch standings");
   }
@@ -8,7 +8,7 @@ export async function fetchCurrentStandings() {
 }
 
 export async function fetchRaceSchedule() {
-  const res = await fetch("http://api.jolpi.ca/ergast/f1/current.json");
+  const res = await fetch("https://api.jolpi.ca/ergast/f1/current.json");
   if (!res.ok) {
     throw new Error("Failed to fetch schedule");
   }

@@ -24,7 +24,11 @@ export default function Chatbot() {
         body: JSON.stringify({ prompt: userMsg })
       });
       const data = await res.json();
-      setMessages(prev => [...prev, { role: 'ai', content: data.response || "No response received." }]);
+      if (!res.ok) {
+        setMessages(prev => [...prev, { role: 'ai', content: data.error || data.response || "Server error occurred." }]);
+      } else {
+        setMessages(prev => [...prev, { role: 'ai', content: data.response || "No response received." }]);
+      }
     } catch (err) {
       console.error(err);
       setMessages(prev => [...prev, { role: 'ai', content: "Error connecting to AI." }]);
