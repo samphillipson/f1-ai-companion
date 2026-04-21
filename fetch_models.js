@@ -1,6 +1,7 @@
 const https = require('https');
 
-https.get('https://generativelanguage.googleapis.com/v1beta/models?key=AIzaSyAlaB_txU2b2DKt8TuodHH_yxMpKw26R1I', (res) => {
+const apiKey = process.env.GEMINI_API_KEY || 'YOUR_API_KEY';
+https.get(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`, (res) => {
   let data = '';
   res.on('data', chunk => data += chunk);
   res.on('end', () => {
