@@ -33,7 +33,7 @@ export default function RegisterPage() {
         throw new Error(data.error || 'Registration failed');
       }
 
-      setSuccess('Account created! Please check your terminal/console for the Ethereal Email link to verify your account.');
+      setSuccess(data.message || 'Account created! Please check your email to verify your account.');
       setEmail('');
       setPassword('');
     } catch (err: any) {

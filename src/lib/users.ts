@@ -1,63 +1,66 @@
-import fs from 'fs';
-import path from 'path';
+import prisma from './prisma';
 
 export interface User {
   id: string;
   email: string;
   passwordHash: string;
   isVerified: boolean;
-  verificationToken?: string;
+  verificationToken?: string | null;
 }
 
-const dataFilePath = path.join(process.cwd(), 'data', 'users.json');
-
-// Ensure the data directory and file exist
-if (!fs.existsSync(path.dirname(dataFilePath))) {
-  fs.mkdirSync(path.dirname(dataFilePath), { recursive: true });
-}
-if (!fs.existsSync(dataFilePath)) {
-  fs.writeFileSync(dataFilePath, JSON.stringify([]), 'utf-8');
-}
-
-export function getAllUsers(): User[] {
+export async function findUserByEmail(email: string): Promise<User | null> {
   try {
-    const data = fs.readFileSync(dataFilePath, 'utf-8');
-    return JSON.parse(data);
+    const user = await prisma.user.findUnique({
+      where: { email: email.toLowerCase() },
+    });
+    return user;
   } catch (error) {
-    console.error('Error reading users data:', error);
-    return [];
+    console.error('Error finding user by email:', error);
+    return null;
   }
 }
 
-export function saveAllUsers(users: User[]): void {
+export async function findUserByVerificationToken(token: string): Promise<User | null> {
   try {
-    fs.writeFileSync(dataFilePath, JSON.stringify(users, null, 2), 'utf-8');
+    const user = await prisma.user.findUnique({
+      where: { verificationToken: token },
+    });
+    return user;
   } catch (error) {
-    console.error('Error writing users data:', error);
+    console.error('Error finding user by verification token:', error);
+    return null;
   }
 }
 
-export function findUserByEmail(email: string): User | undefined {
-  const users = getAllUsers();
-  return users.find((u) => u.email.toLowerCase() === email.toLowerCase());
+export async function createUser(data: Omit<User, 'id' | 'isVerified'>): Promise<User | null> {
+  try {
+    const user = await prisma.user.create({
+      data: {
+        email: data.email.toLowerCase(),
+        passwordHash: data.passwordHash,
+        verificationToken: data.verificationToken,
+        isVerified: false,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.error('Error creating user:', error);
+    return null;
+  }
 }
 
-export function findUserByVerificationToken(token: string): User | undefined {
-  const users = getAllUsers();
-  return users.find((u) => u.verificationToken === token);
-}
-
-export function createUser(user: User): void {
-  const users = getAllUsers();
-  users.push(user);
-  saveAllUsers(users);
-}
-
-export function updateUser(id: string, updates: Partial<User>): void {
-  const users = getAllUsers();
-  const index = users.findIndex(u => u.id === id);
-  if (index !== -1) {
-    users[index] = { ...users[index], ...updates };
-    saveAllUsers(users);
+export async function updateUser(id: string, updates: Partial<User>): Promise<User | null> {
+  try {
+    // Remove id from updates if it exists to prevent Prisma errors
+    const { id: _, ...validUpdates } = updates;
+    
+    const user = await prisma.user.update({
+      where: { id },
+      data: validUpdates,
+    });
+    return user;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    return null;
   }
 }

@@ -1,41 +1,31 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
-let transporter: nodemailer.Transporter;
-
-async function initMailer() {
-  if (transporter) return transporter;
-
-  // Generate a test account on Ethereal Email for local testing
-  const testAccount = await nodemailer.createTestAccount();
-
-  transporter = nodemailer.createTransport({
-    host: testAccount.smtp.host,
-    port: testAccount.smtp.port,
-    secure: testAccount.smtp.secure,
-    auth: {
-      user: testAccount.user,
-      pass: testAccount.pass,
-    },
-  });
-
-  console.log('Ethereal Test Account Created:', testAccount.user);
-  return transporter;
-}
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendVerificationEmail(email: string, token: string) {
-  const tp = await initMailer();
-  
   const verifyUrl = `${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/auth/verify?token=${token}`;
 
-  const info = await tp.sendMail({
-    from: '"F1 AI Companion" <noreply@f1aic.com>',
-    to: email,
-    subject: "Verify your email address",
-    text: `Welcome to F1 AI Companion! Please verify your email by clicking this link: ${verifyUrl}`,
-    html: `<p>Welcome to F1 AI Companion!</p><p>Please verify your email by clicking <a href="${verifyUrl}">here</a>.</p>`,
-  });
+  try {
+    const data = await resend.emails.send({
+      from: 'F1 AI Companion <onboarding@resend.dev>', // resend.dev is the default test domain provided by Resend
+      to: [email],
+      subject: 'Verify your email address - F1 AI Companion',
+      html: `
+        <div>
+          <h2>Welcome to F1 AI Companion!</h2>
+          <p>Please verify your email address by clicking the link below:</p>
+          <a href="${verifyUrl}" style="display: inline-block; padding: 10px 20px; background-color: #e10600; color: white; text-decoration: none; border-radius: 5px;">Verify Email</a>
+          <br /><br />
+          <p>Or copy and paste this URL into your browser:</p>
+          <p><a href="${verifyUrl}">${verifyUrl}</a></p>
+        </div>
+      `,
+    });
 
-  console.log("Message sent: %s", info.messageId);
-  // This URL will show the generated email. Useful for testing without real SMTP.
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    console.log("Verification email sent:", data);
+    return { success: true, data };
+  } catch (error) {
+    console.error("Error sending verification email:", error);
+    return { success: false, error };
+  }
 }

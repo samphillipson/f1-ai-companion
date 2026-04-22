@@ -9,13 +9,13 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Missing token" }, { status: 400 });
   }
 
-  const user = findUserByVerificationToken(token);
+  const user = await findUserByVerificationToken(token);
 
   if (!user) {
     return NextResponse.json({ error: "Invalid or expired token" }, { status: 400 });
   }
 
-  updateUser(user.id, { isVerified: true, verificationToken: undefined });
+  await updateUser(user.id, { isVerified: true, verificationToken: null });
 
   // Redirect to login page with a success flag
   return NextResponse.redirect(new URL('/login?verified=true', req.url));

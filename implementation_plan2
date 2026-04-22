@@ -1,0 +1,81 @@
+# Database & Real Email Integration
+
+This plan outlines the steps to replace the temporary JSON-based data store and mock email service with a robust PostgreSQL database (via Prisma) and a real email provider (Resend).
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Environment Variables Setup**: Before we can fully execute this plan, you will need to create two accounts (they both have generous free tiers):
+> 1. **Database**: Create a PostgreSQL database (I recommend [Neon.tech](https://neon.tech/) or [Supabase](https://supabase.com/)). You will need the `DATABASE_URL` connection string.
+> 2. **Email API**: Create a free account at [Resend](https://resend.com/) and generate an API key. You will need the `RESEND_API_KEY`.
+> 
+> Once you have these, you'll add them to your `.env` or `.env.local` file. I can guide you through this if needed!
+
+## Proposed Changes
+
+### Dependencies
+- Install database tools: `prisma` (dev dependency), `@prisma/client`
+- Install email tools: `resend`
+
+### Database & Prisma Schema
+
+#### [NEW] prisma/schema.prisma
+We will initialize Prisma and create a schema that supports users with hashed passwords and verification tokens.
+
+```prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  passwordHash      String
+  isVerified        Boolean  @default(false)
+  verificationToken String?  @unique
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+```
+
+#### [NEW] src/lib/prisma.ts
+Create a singleton instance of the Prisma client to avoid connection limits during development (a common Next.js issue).
+
+---
+
+### Data Access Layer Updates
+
+#### [MODIFY] src/lib/users.ts
+We will rewrite the functions in this file to interact with the PostgreSQL database via Prisma instead of the local `users.json` file.
+- `findUserByEmail` -> queries Prisma
+- `createUser` -> creates record in Prisma
+- `updateUser` -> updates record in Prisma
+- `findUserByVerificationToken` -> queries Prisma
+
+---
+
+### Email Integration
+
+#### [MODIFY] src/lib/mailer.ts
+We will replace the `nodemailer` / Ethereal Email implementation with the official `resend` Node.js SDK.
+
+- Initialize `const resend = new Resend(process.env.RESEND_API_KEY)`
+- Update `sendVerificationEmail` to use `resend.emails.send(...)`
+
+---
+
+## Verification Plan
+
+### Manual Verification
+1.  **Environment Setup**: User provides `DATABASE_URL` and `RESEND_API_KEY`.
+2.  **Database Migration**: Run `npx prisma db push` to sync the schema to the live database.
+3.  **Registration Flow**: Register a new user via the UI.
+4.  **Database Check**: Verify the user record appears in the PostgreSQL database with `isVerified: false`.
+5.  **Email Check**: Verify that a real email arrives at the registered email address.
+6.  **Verification Flow**: Click the link in the email and ensure the user's database record updates to `isVerified: true`.
+7.  **Login**: Successfully log in with the verified credentials.

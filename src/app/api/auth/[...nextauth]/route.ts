@@ -26,7 +26,7 @@ const handler = NextAuth({
           throw new Error("Missing email or password");
         }
         
-        const user = findUserByEmail(credentials.email);
+        const user = await findUserByEmail(credentials.email);
         if (!user) {
           throw new Error("Invalid credentials");
         }

@@ -12,19 +12,16 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    if (findUserByEmail(email)) {
+    const existingUser = await findUserByEmail(email);
+    if (existingUser) {
       return NextResponse.json({ error: "User already exists" }, { status: 400 });
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
     const verificationToken = crypto.randomBytes(32).toString('hex');
-    const id = crypto.randomUUID();
-
-    createUser({
-      id,
+    await createUser({
       email,
       passwordHash,
-      isVerified: false,
       verificationToken
     });
 
