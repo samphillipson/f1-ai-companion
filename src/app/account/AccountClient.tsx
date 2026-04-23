@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, User } from 'lucide-react';
+import { signOut } from 'next-auth/react';
 import styles from '../auth.module.css';
 
 interface AccountClientProps {
@@ -17,12 +18,15 @@ interface AccountClientProps {
 export default function AccountClient({ user }: AccountClientProps) {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [newEmail, setNewEmail] = useState('');
+  const [emailPassword, setEmailPassword] = useState('');
+  
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
@@ -31,9 +35,7 @@ export default function AccountClient({ user }: AccountClientProps) {
     try {
       const res = await fetch('/api/user/password', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ currentPassword, newPassword }),
       });
 
@@ -53,9 +55,43 @@ export default function AccountClient({ user }: AccountClientProps) {
     }
   };
 
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+    setSuccess('');
+
+    try {
+      const res = await fetch('/api/user/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ newEmail, password: emailPassword }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || 'Failed to update email');
+      } else {
+        setSuccess('Email updated! Please check your new inbox to verify your email before logging in again. Signing out...');
+        setNewEmail('');
+        setEmailPassword('');
+        
+        // Force sign out and redirect to login after a short delay
+        setTimeout(() => {
+          signOut({ callbackUrl: '/login?message=email_changed' });
+        }, 4000);
+      }
+    } catch (err: any) {
+      setError('An unexpected error occurred');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.card}>
+      <div className={styles.card} style={{ maxWidth: '500px' }}>
         <Link href="/" className={styles.backLink}>
           <ArrowLeft size={16} /> Back to Dashboard
         </Link>
@@ -71,9 +107,47 @@ export default function AccountClient({ user }: AccountClientProps) {
         {error && <div className={styles.error}>{error}</div>}
         {success && <div className={styles.success}>{success}</div>}
 
-        <div className={styles.divider}>Change Password</div>
+        <div className={styles.divider}>Change Email</div>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleEmailSubmit}>
+          <div className={styles.inputGroup}>
+            <label className={styles.label} htmlFor="newEmail">New Email Address</label>
+            <input
+              id="newEmail"
+              type="email"
+              className={styles.input}
+              placeholder="new@example.com"
+              value={newEmail}
+              onChange={(e) => setNewEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <label className={styles.label} htmlFor="emailPassword">Current Password (for security)</label>
+            <input
+              id="emailPassword"
+              type="password"
+              className={styles.input}
+              placeholder="••••••••"
+              value={emailPassword}
+              onChange={(e) => setEmailPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button 
+            type="submit" 
+            className={styles.button}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Updating...' : 'Update Email'}
+          </button>
+        </form>
+
+        <div className={styles.divider} style={{ marginTop: '2rem' }}>Change Password</div>
+
+        <form className={styles.form} onSubmit={handlePasswordSubmit}>
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="currentPassword">Current Password</label>
             <input

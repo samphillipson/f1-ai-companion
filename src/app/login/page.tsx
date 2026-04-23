@@ -20,6 +20,9 @@ export default function LoginPage() {
     if (searchParams?.get('verified') === 'true') {
       setSuccess('Email successfully verified! You can now sign in.');
     }
+    if (searchParams?.get('message') === 'email_changed') {
+      setSuccess('Please check your new inbox to verify your email before logging in again.');
+    }
   }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
