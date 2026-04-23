@@ -1,0 +1,9 @@
+- `[x]` Refactor Authentication for Server Use
+  - `[x]` Extract `authOptions` in `src/app/api/auth/[...nextauth]/route.ts`
+- `[x]` Create Account UI
+  - `[x]` Create `src/app/account/page.tsx` (Server Component)
+  - `[x]` Create `src/app/account/AccountClient.tsx` (Client Component)
+- `[x]` Create API Endpoint
+  - `[x]` Create `src/app/api/user/password/route.ts`
+- `[x]` Update Navigation
+  - `[x]` Modify `src/app/page.tsx` to include "Account" and "Sign Out" buttons when logged in.

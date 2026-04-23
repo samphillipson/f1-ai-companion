@@ -2,8 +2,13 @@ import styles from "./page.module.css";
 import Dashboard from "@/components/Dashboard";
 import Chatbot from "@/components/Chatbot";
 import Link from "next/link";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth";
+import SignOutButton from "@/components/SignOutButton";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -13,7 +18,14 @@ export default function Home() {
         <nav className={styles.nav}>
           <a href="#dashboard" className={styles.navLink}>Dashboard</a>
           <a href="#chat" className={styles.navLink}>AI Chat</a>
-          <Link href="/login" className={styles.loginBtn}>Login</Link>
+          {session ? (
+            <>
+              <Link href="/account" className={styles.navLink}>Account</Link>
+              <SignOutButton />
+            </>
+          ) : (
+            <Link href="/login" className={styles.loginBtn}>Login</Link>
+          )}
         </nav>
       </header>
       

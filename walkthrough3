@@ -1,0 +1,20 @@
+# Account Section Implementation Walkthrough
+
+## Overview
+We have successfully implemented the Account Section where logged-in users can view their profile and change their password. 
+
+## Changes Made
+- **Refactored NextAuth**: Extracted `authOptions` in `src/app/api/auth/[...nextauth]/route.ts` so that it can be securely used by Server Components.
+- **Created Account UI**:
+  - `src/app/account/page.tsx` (Server Component): Verifies the session and redirects unauthenticated users to `/login`.
+  - `src/app/account/AccountClient.tsx` (Client Component): Provides the UI for displaying the user's email and the password change form using the existing dark, glassmorphism design system.
+- **Created API Endpoint**: Added a secure POST route at `src/app/api/user/password/route.ts` that validates the current password and hashes the new password using `bcrypt` before saving it to the database via Prisma.
+- **Updated Navigation**: Modified `src/app/page.tsx` to conditionally display an "Account" link and a "Sign Out" button (via a new `SignOutButton` component) when the user is logged in.
+
+## Next Steps / Manual Verification
+Please verify the following manually to ensure everything is working as expected:
+1. Start the development server (`npm run dev`).
+2. Log in using your test account.
+3. Observe the new "Account" and "Sign Out" buttons on the homepage.
+4. Click "Account" and attempt to change your password. Try an incorrect current password first to ensure it's rejected, then try the correct one.
+5. Sign out, and sign back in with your *new* password.
