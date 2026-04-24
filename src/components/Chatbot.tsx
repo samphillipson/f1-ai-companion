@@ -41,7 +41,18 @@ export default function Chatbot() {
     <section id="chat" className={styles.chatbotSection}>
       <div className={`glass-panel ${styles.chatContainer}`}>
         <div className={styles.header}>
-          <h2>F1 AI Assistant</h2>
+          <div className={styles.titleContainer}>
+            <div className={styles.mainTitle}>
+              <div className={styles.geminiStarCrop}>
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Google_Gemini_logo_2025.svg/250px-Google_Gemini_logo_2025.svg.png" 
+                  alt="Gemini"
+                  className={styles.officialLogoStar}
+                />
+              </div>
+              <h2>F1 AI Assistant</h2>
+            </div>
+          </div>
           <span className={styles.status}>Online</span>
         </div>
         

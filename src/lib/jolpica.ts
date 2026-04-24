@@ -15,3 +15,5 @@ export async function fetchRaceSchedule() {
   const data = await res.json();
   return data.MRData.RaceTable.Races;
 }
+
+

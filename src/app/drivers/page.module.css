@@ -1,0 +1,96 @@
+.container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: var(--f1-dark);
+  color: var(--f1-white);
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  transition: var(--transition);
+  width: fit-content;
+  border: none;
+}
+
+.backButton:hover {
+  color: var(--f1-white);
+  transform: translateX(-5px);
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #fff, #aaa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.teamSection {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.teamHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.teamName {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .teamName {
+    font-size: 1.5rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

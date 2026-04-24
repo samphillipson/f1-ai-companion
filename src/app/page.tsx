@@ -11,24 +11,6 @@ export default async function Home() {
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={styles.logo}>
-          <span className={styles.f1}>F1</span> AI Companion
-        </div>
-        <nav className={styles.nav}>
-          <a href="#dashboard" className={styles.navLink}>Dashboard</a>
-          <a href="#chat" className={styles.navLink}>AI Chat</a>
-          {session ? (
-            <>
-              <Link href="/account" className={styles.navLink}>Account</Link>
-              <SignOutButton />
-            </>
-          ) : (
-            <Link href="/login" className={styles.loginBtn}>Login</Link>
-          )}
-        </nav>
-      </header>
-      
       <main className={styles.main}>
         <section className={styles.hero}>
           <h1 className={styles.title}>Unlock the Power of Formula 1 Data</h1>
@@ -41,6 +23,19 @@ export default async function Home() {
         
         <Chatbot />
       </main>
+
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <p className={styles.disclaimer}>
+            <strong>Disclaimer:</strong> This is an unofficial fan application. F1, FORMULA ONE, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX and related marks are trade marks of Formula One Licensing B.V. This application is not affiliated with, endorsed by, or sponsored by Formula 1, the FIA, or Google.
+          </p>
+          <div className={styles.footerLinks}>
+            <span>&copy; {new Date().getFullYear()} F1 AI Companion</span>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

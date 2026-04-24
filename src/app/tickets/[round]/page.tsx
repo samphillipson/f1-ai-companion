@@ -1,0 +1,112 @@
+import { fetchRaceSchedule } from "@/lib/jolpica";
+import styles from "../tickets.module.css";
+import Link from "next/link";
+import { ArrowLeft, Check, Calendar, MapPin } from "lucide-react";
+import BuyButton from "./BuyButton";
+
+export const revalidate = 3600;
+
+export default async function RaceTicketPage({ params }: { params: { round: string } }) {
+  let schedule = [];
+  try {
+    schedule = await fetchRaceSchedule();
+  } catch (e) {
+    console.error("Failed to fetch schedule", e);
+  }
+
+  const race = schedule.find((r: any) => r.round === params.round);
+
+  if (!race) {
+    return (
+      <div className={styles.container}>
+        <h2>Race not found</h2>
+        <Link href="/tickets">Return to Tickets</Link>
+      </div>
+    );
+  }
+
+  const dateStr = new Date(race.date).toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Mock Ticket Tiers
+  const ticketTiers = [
+    {
+      id: "ga",
+      name: "General Admission",
+      price: "$199",
+      features: [
+        "Trackside viewing",
+        "Access to fan zones",
+        "Food and beverage vendors",
+        "Standing areas"
+      ]
+    },
+    {
+      id: "gs",
+      name: "Grandstand Seating",
+      price: "$499",
+      features: [
+        "Reserved seating",
+        "Excellent track views",
+        "Covered seating (where available)",
+        "Dedicated screens"
+      ]
+    },
+    {
+      id: "vip",
+      name: "Paddock Club™ VIP",
+      price: "$4,500",
+      features: [
+        "Exclusive Paddock views",
+        "Pit lane walk access",
+        "Gourmet hospitality",
+        "Open bar & champagne",
+        "F1 driver appearances"
+      ]
+    }
+  ];
+
+  return (
+    <div className={styles.container}>
+      <Link href="/tickets" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#a0a0a0', textDecoration: 'none', marginBottom: '2rem' }}>
+        <ArrowLeft size={16} /> Back to Schedule
+      </Link>
+
+      <header className={styles.raceHeader}>
+        <span className={styles.roundBadge} style={{ marginBottom: '1rem', display: 'inline-block' }}>Round {race.round}</span>
+        <h1 className={styles.title} style={{ marginBottom: '1rem' }}>{race.raceName}</h1>
+        
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', color: '#ccc' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Calendar size={18} color="var(--color-primary)" />
+            {dateStr}
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <MapPin size={18} color="var(--color-primary)" />
+            {race.Circuit.circuitName}, {race.Circuit.Location.locality}
+          </div>
+        </div>
+      </header>
+
+      <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>Select Your Experience</h2>
+
+      <div className={styles.ticketGrid}>
+        {ticketTiers.map((tier) => (
+          <div key={tier.id} className={styles.ticketCard}>
+            <h3 className={styles.ticketTier}>{tier.name}</h3>
+            <div className={styles.ticketPrice}>{tier.price}</div>
+            
+            <ul className={styles.ticketFeatures}>
+              {tier.features.map((feature, idx) => (
+                <li key={idx}>
+                  <Check size={16} color="var(--color-primary)" /> {feature}
+                </li>
+              ))}
+            </ul>
+
+            <BuyButton tier={tier.name} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

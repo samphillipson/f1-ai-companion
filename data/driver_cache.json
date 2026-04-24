@@ -1,0 +1,158 @@
+{
+  "hamilton": {
+    "personal": "Lewis Hamilton was born in Stevenage, England. Raised by his father Anthony, who worked multiple jobs to support his karting career, Hamilton is a British national of Grenadian descent. He is well-known for his interests in high fashion, music, and his advocacy for social justice and environmental sustainability.",
+    "career": "Hamilton's career is defined by his record-tying seven World Championships and the most wins and pole positions in F1 history. Starting with McLaren in 2007, he moved to Mercedes in 2013, sparking an era of dominance that reshaped the sport's record books.",
+    "stats": { "titles": "7", "wins": "105", "podiums": "201", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "lewis_hamilton": {
+    "personal": "Lewis Hamilton was born in Stevenage, England. Raised by his father Anthony, who worked multiple jobs to support his karting career, Hamilton is a British national of Grenadian descent. He is well-known for his interests in high fashion, music, and his advocacy for social justice and environmental sustainability.",
+    "career": "Hamilton's career is defined by his record-tying seven World Championships and the most wins and pole positions in F1 history. Starting with McLaren in 2007, he moved to Mercedes in 2013, sparking an era of dominance that reshaped the sport's record books.",
+    "stats": { "titles": "7", "wins": "105", "podiums": "201", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "verstappen": {
+    "personal": "Max Verstappen was born in Belgium but races under the Dutch flag. The son of former F1 driver Jos Verstappen, he was famously groomed for success from a very early age. He is an avid sim racer and enjoys a relatively private life in Monaco.",
+    "career": "Verstappen became the youngest driver in F1 history at age 17. He has since secured three consecutive World Championships with Red Bull Racing, becoming the dominant force of the modern era with a relentless and aggressive driving style.",
+    "stats": { "titles": "3", "wins": "61", "podiums": "107", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "max_verstappen": {
+    "personal": "Max Verstappen was born in Belgium but races under the Dutch flag. The son of former F1 driver Jos Verstappen, he was famously groomed for success from a very early age. He is an avid sim racer and enjoys a relatively private life in Monaco.",
+    "career": "Verstappen became the youngest driver in F1 history at age 17. He has since secured three consecutive World Championships with Red Bull Racing, becoming the dominant force of the modern era with a relentless and aggressive driving style.",
+    "stats": { "titles": "3", "wins": "61", "podiums": "107", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "leclerc": {
+    "personal": "Charles Leclerc was born and raised in Monte Carlo, Monaco. A talented pianist and fashion enthusiast, he maintains a strong connection to his Monegasque roots. He is known for his humility and his close relationship with the Ferrari family.",
+    "career": "A Ferrari protégé, Leclerc debuted with Sauber before being promoted to the Scuderia. He is the face of Ferrari's championship hopes, known for his incredible qualifying pace and historic victories at Spa and Monza.",
+    "stats": { "titles": "0", "wins": "6", "podiums": "36", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "charles_leclerc": {
+    "personal": "Charles Leclerc was born and raised in Monte Carlo, Monaco. A talented pianist and fashion enthusiast, he maintains a strong connection to his Monegasque roots. He is known for his humility and his close relationship with the Ferrari family.",
+    "career": "A Ferrari protégé, Leclerc debuted with Sauber before being promoted to the Scuderia. He is the face of Ferrari's championship hopes, known for his incredible qualifying pace and historic victories at Spa and Monza.",
+    "stats": { "titles": "0", "wins": "6", "podiums": "36", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "norris": {
+    "personal": "Lando Norris was born in Bristol, England. Known for his digital presence and love for gaming, he founded the brand Quadrant. He is an approachable and relatable figure, often sharing his interests in golf and photography.",
+    "career": "Norris has been a standout performer for McLaren since his debut. He secured a breakthrough maiden victory in Miami in 2024, cementing his status as one of the sport's top-tier talents and a future title contender.",
+    "stats": { "titles": "0", "wins": "1", "podiums": "20", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "alonso": {
+    "personal": "Fernando Alonso was born in Oviedo, Spain. A double World Champion, he is known for his 'samurai' philosophy and extreme competitiveness. He is a keen cyclist and a dedicated fan of Real Madrid.",
+    "career": "Alonso famously ended Michael Schumacher's dominance in the mid-2000s. With over two decades in the sport, his racecraft and longevity are legendary, spanning stints at Renault, Ferrari, McLaren, and Aston Martin.",
+    "stats": { "titles": "2", "wins": "32", "podiums": "106", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "sainz": {
+    "personal": "Carlos Sainz Jr. was born in Madrid, Spain, as the son of rally legend Carlos Sainz. Known as the 'Smooth Operator', he is an analytical driver who enjoys golf and surfing away from the track.",
+    "career": "Sainz has raced for Toro Rosso, Renault, McLaren, and Ferrari. He is a multiple race winner, celebrated for his strategic intelligence and his ability to deliver consistent results in high-pressure situations.",
+    "stats": { "titles": "0", "wins": "3", "podiums": "22", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "russell": {
+    "personal": "George Russell was born in King's Lynn, England. Known for his professional demeanor and technical focus, he is a key figure in the Mercedes team. He enjoys fitness and sharing his training routines.",
+    "career": "After excelling at Williams, Russell was promoted to Mercedes where he secured his first victory in Brazil. He is regarded as a future world champion, known for his clinical pace and qualifying brilliance.",
+    "stats": { "titles": "0", "wins": "2", "podiums": "14", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "piastri": {
+    "personal": "Oscar Piastri was born in Melbourne, Australia. Known for his calm and composed attitude, he moved to Europe as a teenager to pursue racing. He is a supporter of the Richmond Tigers in Australian rules football.",
+    "career": "Piastri won the F3 and F2 titles in consecutive rookie years. Since joining McLaren, he has proven his elite talent with a Sprint win and multiple podiums, marking him as a future star of the sport.",
+    "stats": { "titles": "0", "wins": "1", "podiums": "9", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "gasly": {
+    "personal": "Pierre Gasly was born in Rouen, France. A stylish individual with an interest in fashion, he is a resilient driver who has overcome significant personal and professional challenges throughout his career.",
+    "career": "Gasly's career highlight is a historic victory at the 2020 Italian Grand Prix with AlphaTauri. Now leading the Alpine team, he remains a consistent point-scorer and a premier midfield talent.",
+    "stats": { "titles": "0", "wins": "1", "podiums": "4", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "perez": {
+    "personal": "Sergio 'Checo' Perez was born in Guadalajara, Mexico. A devoted family man and national hero, he is known for his tyre management skills and his deep connection to his Mexican fans.",
+    "career": "Perez has enjoyed a long career, peaking with his move to Red Bull Racing. A multiple race winner, including a historic victory in Monaco, he is Mexico's most successful F1 driver of all time.",
+    "stats": { "titles": "0", "wins": "6", "podiums": "39", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "stroll": {
+    "personal": "Lance Stroll was born in Montreal, Canada. The son of Lawrence Stroll, he has been immersed in racing since childhood. He is an avid skier and outdoor enthusiast who keeps a focused profile.",
+    "career": "Stroll famously secured a podium in his rookie season at age 18. He has since amassed multiple podiums and a pole position, particularly excelling in challenging wet-weather conditions.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "3", "bestFinish": "3rd" },
+    "timestamp": 1777025219132
+  },
+  "hulkenberg": {
+    "personal": "Nico Hulkenberg was born in Emmerich am Rhein, Germany. Known for his professional and straightforward approach, he is highly respected for his technical knowledge and consistency.",
+    "career": "Hulkenberg is a stalwart of the midfield, having raced for Williams, Renault, and Haas. A Le Mans winner, he is celebrated for his qualifying pace and his ability to maximize the potential of his car.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "4th" },
+    "timestamp": 1777025219132
+  },
+  "tsunoda": {
+    "personal": "Yuki Tsunoda was born in Sagamihara, Japan. Famous for his fiery personality, he is a fan favorite known for his love of food and his honest approach to life and racing.",
+    "career": "Tsunoda has shown significant growth with RB, evolving into a consistent leader. His raw speed and daring overtakes have made him Japan's leading representative in the sport.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "4th" },
+    "timestamp": 1777025219132
+  },
+  "albon": {
+    "personal": "Alexander Albon was born in London but races for Thailand. A polite and popular figure, he is a dedicated athlete who enjoys animals, golf, and spending time with his supportive family.",
+    "career": "Albon has become the undisputed leader at Williams after a resilient return to the grid. He is praised for his defensive driving and his ability to consistently drag points out of midfield cars.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "2", "bestFinish": "3rd" },
+    "timestamp": 1777025219132
+  },
+  "bearman": {
+    "personal": "Oliver Bearman was born in Chelmsford, Essex. A grounded young talent from the Ferrari Academy, he is known for his mature temperament and his rapid rise through the junior categories.",
+    "career": "Bearman made a stunning F1 debut for Ferrari in Saudi Arabia, finishing in the points at just 18 years old. This performance fast-tracked him to a full-time seat for the future.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "7th" },
+    "timestamp": 1777025219132
+  },
+  "antonelli": {
+    "personal": "Andrea Kimi Antonelli was born in Bologna, Italy. A once-in-a-generation talent, he has been carefully mentored by Mercedes to become the next Italian star of Formula 1.",
+    "career": "Antonelli's career is marked by dominant titles in every junior category he entered. His entry into F1 with Mercedes is one of the most anticipated debuts in the history of the sport.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "N/A" },
+    "timestamp": 1777025219132
+  },
+  "arvid_lindblad": {
+    "personal": "Arvid Lindblad was born in London. A key member of the Red Bull Junior Team, he is known for his focused and analytical approach to racing and his rapid development.",
+    "career": "Lindblad has enjoyed a meteoric rise through the junior ranks, proving himself to be a race-winner in F3. He is considered one of Red Bull's most promising prospects for a future F1 seat.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "N/A" },
+    "timestamp": 1777025219132
+  },
+  "bortoleto": {
+    "personal": "Gabriel Bortoleto was born in Sao Paulo, Brazil. Managed by Fernando Alonso, he is the latest talent to emerge from a nation with a deep and storied history in Formula 1.",
+    "career": "Bortoleto won the F3 championship in his rookie season, immediately marking him as a premier talent. His smooth driving style and consistency have fast-tracked him toward the F1 grid.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "N/A" },
+    "timestamp": 1777025219132
+  },
+  "colapinto": {
+    "personal": "Franco Colapinto was born in Pilar, Argentina. A charismatic figure who has revitalized F1 interest in his home country, he moved to Europe alone as a teenager to pursue his dreams.",
+    "career": "Colapinto made a surprise and impressive mid-season debut for Williams, scoring points almost immediately and establishing himself as a legitimate talent for the sport's future.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "8th" },
+    "timestamp": 1777025219132
+  },
+  "ocon": {
+    "personal": "Esteban Ocon was born in Évreux, France. His journey is a famous story of sacrifice, with his parents selling their home to support his karting. He is a tall, athletic, and fiercely competitive racer.",
+    "career": "Ocon's career highlight is a legendary victory at the 2021 Hungarian Grand Prix. Known for his defensive skills and technical consistency, he is a proven race-winner and leader.",
+    "stats": { "titles": "0", "wins": "1", "podiums": "3", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "bottas": {
+    "personal": "Valtteri Bottas was born in Nastola, Finland. A coffee and cycling enthusiast, he has embraced an authentic and relaxed personality in recent years while maintaining his elite speed.",
+    "career": "A 10-time race winner with Mercedes, Bottas played a crucial role in multiple constructors' titles. Now a leader at Sauber, he remains one of the most respected and fastest qualifiers on the grid.",
+    "stats": { "titles": "0", "wins": "10", "podiums": "67", "bestFinish": "1st" },
+    "timestamp": 1777025219132
+  },
+  "lawson": {
+    "personal": "Liam Lawson was born in Hastings, New Zealand. A quiet and focused athlete, he has proven his worth by excelling in every category he has entered across the globe.",
+    "career": "Lawson famously scored points as a late replacement in F1, earning him a reputation as a highly dependable and fast driver. He is the future of the Red Bull/RB driver program.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "9th" },
+    "timestamp": 1777025219132
+  },
+  "hadjar": {
+    "personal": "Isack Hadjar was born in Paris, France. A fiery member of the Red Bull Junior Team, he is known for his unfiltered personality and his extreme dedication to the simulator.",
+    "career": "Hadjar has been a title contender in both F3 and F2, known for his aggressive racecraft. He is widely considered the next French star to graduate to the Formula 1 grid.",
+    "stats": { "titles": "0", "wins": "0", "podiums": "0", "bestFinish": "N/A" },
+    "timestamp": 1777025219132
+  }
+}

@@ -1,97 +1,156 @@
 .dashboard {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   width: 100%;
-  max-width: 1000px;
   margin: 0 auto;
 }
 
 .sectionTitle {
-  font-size: 2rem;
-  font-weight: 700;
-  border-left: 4px solid var(--f1-red);
-  padding-left: 1rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  color: var(--f1-white);
+  margin-bottom: 1rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
 }
 
 .card {
-  padding: 2rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  transition: transform 0.3s ease;
+  gap: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius);
+  transition: var(--transition);
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
 .card h3 {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--f1-white);
-  border-bottom: 1px solid var(--glass-border);
-  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.8rem;
 }
 
 .loader {
-  color: #a0a0a0;
+  color: rgba(255, 255, 255, 0.5);
   font-style: italic;
+  font-weight: 500;
 }
 
 .standingsList {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .driverItem {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
+  gap: 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.teamAccent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--team-color, var(--f1-red));
+}
+
+.teamLogo {
+  height: 52px;
+  width: 70px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(5) opacity(0.15);
+  flex-shrink: 0;
+  margin-left: 0.6rem;
+  margin-right: 0.4rem;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.driverItem:hover .teamLogo {
+  filter: grayscale(1) brightness(5) opacity(0.4);
+  transform: scale(1.08);
+}
+
+.driverItem:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.position, .name, .points {
+  position: relative;
+  z-index: 2;
 }
 
 .position {
-  font-weight: 800;
+  font-weight: 900;
   color: var(--f1-red);
-  font-size: 1.2rem;
-  width: 20px;
+  font-size: 1.4rem;
+  width: 25px;
+  font-style: italic;
 }
 
 .name {
   flex: 1;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .points {
   font-weight: 700;
-  background: var(--f1-white);
-  color: var(--f1-black);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--f1-white);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 85px;
+  text-align: center;
 }
 
 .placeholder {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #a0a0a0;
+  color: rgba(255, 255, 255, 0.5);
+  min-height: 200px;
 }
 
 .pulse {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: var(--f1-red);
   border-radius: 50%;
   animation: pulseAnim 2s infinite;
@@ -100,6 +159,58 @@
 
 @keyframes pulseAnim {
   0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(225, 6, 0, 0); }
+  70% { transform: scale(1); box-shadow: 0 0 0 25px rgba(225, 6, 0, 0); }
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(225, 6, 0, 0); }
+}
+
+.actionBtn {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  background-color: var(--f1-red);
+  color: var(--f1-white);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  transition: var(--transition);
+  width: 100%;
+  margin-top: auto;
+}
+
+.actionBtn:hover {
+  background-color: #b30500;
+  transform: translateY(-3px) scale(1.02);
+}
+
+.nextRaceInfo {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nextRaceInfo p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nextRaceInfo strong {
+  color: var(--f1-white);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  margin-right: 8px;
+}
+
+.raceTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--f1-red);
+  margin-bottom: 0.5rem;
 }
